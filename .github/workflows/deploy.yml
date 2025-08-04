@@ -11,6 +11,9 @@ permissions:
 
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
@@ -29,4 +32,5 @@ jobs:
         uses: actions/configure-pages@v3
 
       - name: Desplegar a GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v2
